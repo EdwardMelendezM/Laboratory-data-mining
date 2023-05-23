@@ -1,69 +1,81 @@
 # Cargar la biblioteca de minería de datos (si no está cargada)
-library(caret)
 library(randomForest)
-library(e1071)
-library(gbm)
-
+library(caret)
+library(pROC)
 # SEPARACION DE DATOS DE ENTRENAMIENTO Y PRUEBA
+datos
+summary(datos)
+dim(datos)
+class(datos)
+set.seed(123)
+colnames(datos)
 
-# Definir una proporción para dividir los datos (por ejemplo, 70% para entrenamiento y 30% para prueba)
-proporcion_entrenamiento <- 0.7
+colnames(datos) <- c("LAND_SQUARE_FEET", "TAX_CLASS_AT_TIME_OF_SALE", "COMMERCIAL_UNITS", "BLOCK",
+                     "ZIP_CODE", "RESIDENTIAL_UNITS", "TOTAL_UNITS", "BUILDING_CLASS_CATEGORY",
+                     "BUILDING_CLASS_AT_PRESENT", "NEIGHBORHOOD", "SALE_PRICE")
 
-# Crear un índice aleatorio para la división de datos
-set.seed(42)  # Establecer una semilla para reproducibilidad
-indice_entrenamiento <- createDataPartition(datos$`SALE PRICE`, p = proporcion_entrenamiento, list = FALSE)
- 
-# Crear los conjuntos de datos de entrenamiento y prueba
-datos_entrenamiento <- datos[indice_entrenamiento, ]
-datos_prueba <- datos[-indice_entrenamiento, ]
+# Dividir los datos en características (X) y variable objetivo (y)
+X <- datos[, -which(names(datos) == "SALE_PRICE")]
+y <- datos$SALE_PRICE
+
+# Dividir los datos en conjunto de entrenamiento y conjunto de prueba
+set.seed(42)
+train_indices <- sample(1:nrow(datos), nrow(datos) * 0.8)
+X_train <- X[train_indices, ]
+y_train <- y[train_indices]
+X_test <- X[-train_indices, ]
+y_test <- y[-train_indices]
+
+# Crear el modelo de regresión utilizando Random Forest
+model <- randomForest(x = X_train, y = y_train)
+
+# Realizar predicciones en el conjunto de prueba
+predictions <- predict(model, X_test)
+
+# Convertir las variables a tipo numérico
+predictions <- as.numeric(predictions)
+y_test <- as.numeric(y_test)
+
+# Evaluar el rendimiento del modelo
+rmse <- sqrt(mean((predictions - y_test)^2))
+print(paste("RMSE:", rmse))
+
+#1.12 unidades de los valores reales en el conjunto de prueba.
+
+# VISUALIZAR LOS RESULTADOS CON UNA MATRIZ DE CONFUSION
+
+# Crear la matriz de confusión
+confusion_matrix <- confusionMatrix(data = factor(predictions, levels = c(0, 1,2)),
+                                    reference = factor(y_test, levels = c(0, 1,2)))
+# Visualizar la matriz de confusión como tabla
+print(confusion_matrix$table)
+
+# Visualizar la matriz de confusión como mapa de calor
+heatmap(confusion_matrix$table, col = colorRampPalette(c("white", "blue","yellow"))(100))
 
 
-# ENTRENAMIENTO DE MODELOS DE CLASIFICACION
+# VISUALIZAR LOS RESULTADOS CON Gráfico de ROC
 
-# Modelos utilizados
-modelos <- c("Bosques Aleatorios" = "rf",
-             "Máquinas de Vectores de Soporte" = "svmRadial",
-             "Gradient Boosting" = "gbm")
+# Calcular la curva ROC
+roc_curve <- roc(response = factor(y_test, levels = c(0, 1)),
+                 predictor = predictions)
 
-# Crear una lista para almacenar las predicciones y precisión de cada modelo
-resultados <- list()
+# Visualizar la curva ROC
+plot(roc_curve, main = "Curva ROC", print.auc = TRUE)
 
-# Entrenar los modelos y realizar predicciones en el conjunto de prueba
-for (modelo_nombre in names(modelos)) {
-  modelo <- modelos[modelo_nombre]
-  
-  # Entrenar el modelo
-  if (modelo == "rf") {
-    modelo_entrenado <- randomForest(`SALE PRICE` ~ ., data = datos_entrenamiento)
-  } else if (modelo == "svmRadial") {
-    modelo_entrenado <- svm(`SALE PRICE` ~ ., data = datos_entrenamiento, kernel = "radial")
-  } else if (modelo == "gbm") {
-    modelo_entrenado <- gbm(`SALE PRICE` ~ ., data = datos_entrenamiento, n.trees = 100, shrinkage = 0.1)
-  }
-  
-  # Realizar predicciones en el conjunto de prueba
-  predicciones <- predict(modelo_entrenado, newdata = datos_prueba)
-  
-  # Calcular la matriz de confusión
-  matriz_confusion <- table(Real = datos_prueba$`SALE PRICE`, Prediccion = predicciones)
-  
-  # Calcular la precisión del modelo
-  precision <- sum(diag(matriz_confusion)) / sum(matriz_confusion)
-  
-  # Almacenar los resultados en la lista
-  resultados[[modelo_nombre]] <- list(modelo_entrenado = modelo_entrenado,
-                                      predicciones = predicciones,
-                                      matriz_confusion = matriz_confusion,
-                                      precision = precision)
-}
 
-# Imprimir los resultados
-for (modelo_nombre in names(resultados)) {
-  modelo_resultado <- resultados[[modelo_nombre]]
-  
-  cat("Modelo:", modelo_nombre, "\n")
-  cat("Matriz de Confusión:\n")
-  print(modelo_resultado$matriz_confusion)
-  cat("Precisión:", modelo_resultado$precision, "\n\n")
-}
 
+# VISUALIZAR LOS RESULTADOS CON BARRAS DE PASTEL
+
+# Crear un data frame con las etiquetas reales y predichas
+results <- data.frame(Real = factor(y_test, levels = c(0, 1,2)),
+                      Predicha = factor(predictions, levels = c(0, 1,2)))
+
+# Contar las frecuencias de las etiquetas
+freq <- table(results)
+
+# Visualizar como gráfico de barras
+barplot(freq, beside = TRUE, legend.text = rownames(freq))
+
+# Visualizar como gráfico de pastel
+pie(freq)

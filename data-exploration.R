@@ -1,17 +1,9 @@
-#LIBRERIAS
-library(readr)
 library(tidyverse)
 library(GGally)
+#-----------------------------------------------------------
+# 1.1 CONJUNTO DE DATOS
 
-# EXPLORACION DE DATOS
-
-dataset <- read_csv2("dataset/rollingsales_bronx.csv")
-
-dim(dataset)
-summary(dataset)
-
-#Exploracion de columnas
-colnames(dataset)
+# ANALISIS DE COLUMNAS
 
 # "BOROUGH": El código de borough de la propiedad.
 # "NEIGHBORHOOD": El nombre del vecindario de la propiedad.
@@ -33,28 +25,37 @@ colnames(dataset)
 # "SALE PRICE": El precio de venta de la propiedad.
 # "SALE DATE": La fecha de venta de la propiedad.
 
-# Nuestra variable DEPENDIENTE sera SALE "SALE PRICE" por que queremos saber si la propiedad
-# que tenemos valdra cierto promedio de venta
 
+# EXPLORACION DE DATOS
+dataset <- read_csv2("dataset/rollingsales_bronx.csv")
+
+# Verificar los cambios
+head(dataset)
+
+
+#Mostara 3 filas
+print(dataset, n = 6, width = Inf)
+
+#-----------------------------------------------------------
+# 1.2 CALIDAD DE DATOS
+
+# Resumen de datos
+class(dataset)
+dim(dataset)
+summary(dataset)
+colnames(dataset)
+
+# Remover comas y convertir a numérico el tipo SALE PRICE
 sale_price <- dataset$`SALE PRICE`
-sale_price
-class(sale_price)
-
-# Remover comas y convertir a numérico
 cleaned_sale_price <- as.numeric(gsub(",", ".", sale_price))
 dataset$`SALE PRICE`<- cleaned_sale_price
-dataset
-
-
-# LIMPIEZA DE DATOS
-
 
 # Calcular la cantidad de valores NA en cada columna
 cantidad_nulos <- colSums(is.na(dataset))
 cantidad_nulos
 
 #Algunas columnas tienen casi en su totalidad valores nulos, por lo tanto las eliminamos
-columnas_a_eliminar <- c("EASEMENT", "APARTMENT NUMBER")
+columnas_a_eliminar <- c("EASEMENT", "APARTMENT NUMBER","BOROUGH")
 dataset <- dataset[, !(names(dataset) %in% columnas_a_eliminar)]
 
 #Verificamos nuestro dataset
@@ -81,10 +82,6 @@ cantidad_nulos_despues
 isNumericDataset<-dataset %>% summarize_if(is.numeric, mean)
 isNumericDataset
 
-#Limpiar filas con datos NA y duplicados otra vez
-clean.data <- dataset %>% drop_na() %>% unique()
-clean.data
-dim(clean.data)
 
 
 # VERIFICAR LOS DATOS CATEGORICOS Y ELIMINA AQUELLOS QUE TIENEN DATOS UNICOS
@@ -92,9 +89,9 @@ dim(clean.data)
 resultados <- list()
 
 # Recorrer las columnas y calcular los resultados
-for (col in names(clean.data)) {
-  num_filas <- nrow(clean.data)  # número total de filas en el dataset
-  num_valores_unicos <- length(unique(clean.data[[col]]))  # cantidad de valores únicos en la columna
+for (col in names(dataset)) {
+  num_filas <- nrow(dataset)  # número total de filas en el dataset
+  num_valores_unicos <- length(unique(dataset[[col]]))  # cantidad de valores únicos en la columna
   
   proporcion_valores_unicos <- num_valores_unicos / num_filas
   
@@ -113,9 +110,226 @@ resultados
 
 # ELIMINAR COLUMNA CON DATOS UNICOS
 columnas_a_eliminar <- c("ADDRESS")
-clean.data <- clean.data[, !(names(clean.data) %in% columnas_a_eliminar)]
-dim(clean.data)
+dataset <- dataset[, !(names(dataset) %in% columnas_a_eliminar)]
+dim(dataset)
+
+#Eliminamos los valores que son inusuales o absurdos en SALE PRICE
+dataset <- dataset[dataset$`SALE PRICE` > 100, ]
 
 
-# VER LAS GRAFICAS PARA SELECCIONAR NUESTRAS COLUMNAS PARA EL ENTRENAMIENTO
+# Supongamos que tienes una columna llamada 'fecha' en tu conjunto de datos
+dataset$`SALE DATE` <- as.Date(dataset$`SALE DATE`)  # Convertir la columna 'fecha' a tipo Date
+
+# Luego, puedes convertir la columna de fecha a tipo numérico
+dataset$`SALE DATE` <- as.numeric(dataset$`SALE DATE`)
+
+breaks <- quantile(dataset$`SALE PRICE`, probs = c(0, 0.33, 0.67, 1))
+breaks
+dataset$`SALE PRICE` <- cut(dataset$`SALE PRICE`,
+                          breaks = breaks,
+                          labels = c(0, 1, 2))
+
+#Actualizar valores numericos
+columnas_numericas <- names(dataset)[sapply(dataset, is.numeric)]
+columnas_NO_numericas <- names(dataset)[!sapply(dataset, is.numeric)]
+
+
+
+dataset
+#-----------------------------------------------------------
+# 1.3 AGREGACION
+# No es necesario hacer la agregacion
+
+
+
+#-----------------------------------------------------------
+# 1.4 MUESTREO - ALEATORIO
+take <- sample(seq(nrow(dataset)), size = 100)
+muestraDataset<-dataset[take, ]
+muestraDataset
+
+
+#-----------------------------------------------------------
+# 1.5 ESCALADO MULTIDIMENSIONAL
+numeric_columns <- sapply(muestraDataset, is.numeric)
+selected_columns <- names(muestraDataset)[numeric_columns]
+selected_columns <- selected_columns[!selected_columns %in% "SALE PRICE"]
+d <- muestraDataset %>% select(all_of(selected_columns)) %>% dist()
+fit <- cmdscale(d, k = 2)
+colnames(fit) <- c("comp1", "comp2")
+fit <- as_tibble(fit) %>% add_column("SALE PRICE" = muestraDataset$"SALE PRICE")
+ggplot(fit, aes(x = comp1, y = comp2)) + geom_point()
+#---------------------------------------------------------------------
+# DISCRETIZACION DE CARACTERISTICAS
+library(Matrix)
+library(arules)
+
+
+ggplot(muestraDataset, aes(x = `LAND SQUARE FEET` )) + geom_histogram(binwidth = .2)
+ggplot(muestraDataset, aes(x = `GROSS SQUARE FEET` )) + geom_histogram(binwidth = .2)
+ggplot(muestraDataset, aes(x = `YEAR BUILT` )) + geom_histogram(binwidth = .2)
+
+#---------------------------------------------------------------------
+# ESTANDARIZACION DE DATOS
+scale_numeric <- function(x) x %>% mutate_if(is.numeric, function(y) as.vector(scale(y)))
+muestraDataset <- muestraDataset %>% scale_numeric()
+summary(muestraDataset)
+#---------------------------------------------------------------------
+# PROXIMIDADES Y DISTANCIAS
+people <- muestraDataset %>% mutate_if(is.character, factor)
+people
+#---------------------------------------------------------------------
+# VER MATRIZ DE CORRELACION
+cc <- muestraDataset %>% select(-columnas_NO_numericas) %>% cor()
+cc
+ggplot(muestraDataset, aes(`RESIDENTIAL UNITS`, `TOTAL UNITS`)) + 
+  geom_point() +
+  geom_smooth(method = "lm")
+#---------------------------------------------------------------------
+# ESTIMACION DE DENSIDAD
+library(tidyverse)
+
+#Dos dimensiones
+ggplot(muestraDataset, aes(`RESIDENTIAL UNITS`, `TOTAL UNITS`)) +
+  geom_density_2d_filled() +
+  geom_jitter()
+#---------------------------------------------------------------------
+# MATRIZ DE CORRELACION
+#Seleccionamos todos los datos menos species, lo hacemos matriz
+# y por ultimo hallamos la correlacion
+library(ggcorrplot)
+library(seriation)
+library(corrplot)
+cm1 <- muestraDataset %>% select(-columnas_NO_numericas,-`SALE PRICE`) %>% as.matrix %>% cor()
+ggcorrplot(cm1)
+#Vemos otro
+gghmap(cm1, prop = TRUE)
+
+# Visualiza la matriz de correlación
+corrplot(cm1, type = "upper", method = "circle")
+
+#---------------------------------------------------------------------
+# CONVERSION DE DATOS CATEGORICOS A NUMERICOS CON FACTORES
+# Seleccionar las columnas categóricas que se convertirán en factores
+muestraDataset[columnas_NO_numericas] <- lapply(muestraDataset[columnas_NO_numericas], factor)
+
+# Convertir los factores a variables numericas
+muestraDataset[columnas_NO_numericas] <- lapply(muestraDataset[columnas_NO_numericas], as.numeric)
+
+# Imprimir el resultado
+muestraDataset
+
+#--------------------------------------------------------------------
+# VISUALIZAR DATOS ATIPICOS DE COLUMNAS NUMERICAS
+library(ggplot2)
+# Calcular la cantidad de valores atípicos en cada columna numérica
+valores_atipicos <- sapply(muestraDataset[, columnas_numericas], function(x) {
+  limite_superior <- mean(x) + 2 * sd(x)
+  limite_inferior <- mean(x) - 2 * sd(x)
+  sum(x < limite_inferior | x > limite_superior)
+})
+
+# Crear un dataframe con los nombres de las columnas y la cantidad de valores atípicos
+datos_atipicos <- data.frame(Columna = names(valores_atipicos),
+                             Valores_Atípicos = valores_atipicos)
+
+# Crear el gráfico de barras
+grafico <- ggplot(datos_atipicos, aes(x = Columna, y = Valores_Atípicos)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  labs(title = "Cantidad de Valores Atípicos por Columna",
+       x = "Columna", y = "Cantidad de Valores Atípicos") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+# Mostrar el gráfico
+print(grafico)
+
+
+#---------------------------------------------------------------------
+# ELIMINAR DATOS ATIPICOS DE LAS COLUMNAS NUMERCIAS
+
+# Calcular los límites para identificar los valores atípicos en cada columna numérica
+limites <- sapply(muestraDataset[, columnas_numericas], function(x) {
+  limite_superior <- mean(x) + 2 * sd(x)
+  limite_inferior <- mean(x) - 2 * sd(x)
+  list(limite_inferior = limite_inferior, limite_superior = limite_superior)
+})
+
+# Eliminar los valores atípicos en cada columna numérica
+datos_sin_atipicos <- muestraDataset
+for (i in 1:length(columnas_numericas)) {
+  columna <- names(columnas_numericas)[i]
+  limite_inf <- limites$limite_inferior[i]
+  limite_sup <- limites$limite_superior[i]
+  datos_sin_atipicos[, columna] <- ifelse(muestraDataset[, columna] >= limite_inf & muestraDataset[, columna] <= limite_sup,
+                                          muestraDataset[, columna], NA)
+}
+
+# Eliminar filas que contienen valores atípicos en al menos una columna numérica
+datos_sin_atipicos <- datos_sin_atipicos[complete.cases(datos_sin_atipicos), ]
+
+#VISUALIZAR NUESTRA RELACION DE COLUMNAS
+cm1 <- datos_sin_atipicos %>% select(-columnas_NO_numericas,-`SALE PRICE`) %>% as.matrix %>% cor()
+cm1
+# Visualiza la matriz de correlación
+corrplot(cm1, type = "upper", method = "square")
+ggcorrplot(cm1)
+gghmap(cm1, prop = TRUE)
+
+#DE LAS VARIABLES VISTAS LAS COLUMNAS QUE TIENEN MAYOR CORRELACION SON:
+# `LAND SQUARE FEET` `TAX CLASS AT TIME OF SALE` `COMMERCIAL UNIT`
+# BLOCK `ZIP CODE`
+# `RESIDENTIAL UNITS` `TOTAL UNITS`
+
+# PRUEBAS DE CHI CUADRADO Y ANOVA PARA LOS DATOS CATEGORICOS
+
+# Cargar la biblioteca necesaria
+library(stats)
+
+columnas_categoricas <- names(dataset)[!sapply(dataset, is.numeric)]
+columnas_categoricas
+datos<- datos_sin_atipicos
+
+
+# Realizar el test de chi cuadrado
+anova_result <- anova(lm(`SALE PRICE` ~ NEIGHBORHOOD +
+                           `BUILDING CLASS CATEGORY` +
+                           `TAX CLASS AT PRESENT` +
+                           `BUILDING CLASS AT PRESENT` +
+                           `BUILDING CLASS AT TIME OF SALE`,
+                         data = datos))
+# Mostrar los resultados del test de ANOVA
+print(anova_result)
+
+# POR LO TANTO DADO LO ANTERIOR DEBEMOS CONSIDERAR COMO VARIABLES CATEGORICAS
+# QUE SERAN INCLUIDAS AL MODELO
+# `BUILDING CLASS CATEGORY`  `BUILDING CLASS AT PRESENT`
+
+# SELECCION DE COLUMNAS APROPIADAS PARA EL ENTRENAMIENTO
+# Final
+datos<-datos_sin_atipicos %>% select(`LAND SQUARE FEET`,
+                                     `TAX CLASS AT TIME OF SALE`,
+                                     `COMMERCIAL UNITS`,
+                                     BLOCK,
+                                     `ZIP CODE`,
+                                     `RESIDENTIAL UNITS`,
+                                     `TOTAL UNITS`,
+                                     `BUILDING CLASS CATEGORY`,
+                                     `BUILDING CLASS AT PRESENT`,
+                                     NEIGHBORHOOD,
+                                     `SALE PRICE`)
+
+datos
+
+#-----------------------------------------------------------------
+# GUARDANDO DATOS
+carpeta <- "resultados"
+
+# Especifica el nombre del archivo CSV
+nombre_archivo <- "rollingsales_clean.csv"
+
+# Combina la ruta de la carpeta y el nombre del archivo
+ruta_completa <- file.path(carpeta, nombre_archivo)
+
+# Guarda el dataset en formato CSV en la ruta especificada
+write.csv(datos, file = ruta_completa, row.names = FALSE)
 
