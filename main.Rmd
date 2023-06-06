@@ -1,0 +1,102 @@
+---
+title: Data exploration and clean data
+author: Edward Melendez Mendigure
+date: 05/06/2023
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+---
+
+# EXPLORACION Y LIMPIEZA DE DATOS
+
+## 1.1 CONJUNTO DE DATOS
+
+-   "BOROUGH": El código de borough de la propiedad.
+-   "NEIGHBORHOOD": El nombre del vecindario de la propiedad.
+-   "BUILDING CLASS CATEGORY": La categoría de clase de construcción de la propiedad.
+-   "TAX CLASS AT PRESENT": La clase de impuesto actual de la propiedad.
+-   "BLOCK": El número de bloque de la propiedad.
+-   "LOT": El número de lote de la propiedad.
+-   "BUILDING CLASS AT PRESENT": La clase de construcción actual de la propiedad.
+-   "ADDRESS": La dirección de la propiedad.
+-   "ZIP CODE": El código postal de la propiedad.
+-   "RESIDENTIAL UNITS": El número de unidades residenciales en la propiedad.
+-   "COMMERCIAL UNITS": El número de unidades comerciales en la propiedad.
+-   "TOTAL UNITS": El número total de unidades en la propiedad.
+-   "LAND SQUARE FEET": El tamaño del terreno en pies cuadrados.
+-   "GROSS SQUARE FEET": El tamaño bruto en pies cuadrados.
+-   "YEAR BUILT": El año de construcción de la propiedad.
+-   "TAX CLASS AT TIME OF SALE": La clase de impuesto al momento de la venta de la propiedad.
+-   "BUILDING CLASS AT TIME OF SALE": La clase de construcción al momento de la venta de la propiedad.
+-   "SALE PRICE": El precio de venta de la propiedad.
+-   "SALE DATE": La fecha de venta de la propiedad.
+
+### Librerias
+
+```{r}
+library(tidyverse)
+library(GGally)
+```
+
+### Mostrar data
+
+```{r}
+
+# EXPLORACION DE DATOS
+dataset <- read_csv2("dataset/rollingsales_bronx.csv")
+#Mostara 3 filas
+print(dataset, n = 6, width = Inf)
+```
+
+
+## 1.2 CALIDAD DE DATOS
+Visualizemos los datos de forma general
+```{r}
+# Resumen de datos
+class(dataset)
+dim(dataset)
+summary(dataset)
+colnames(dataset)
+```
+
+### Limpieza de datos
+1.2.1 Remover comas y convertir a numérico el tipo SALE PRICE
+```{r}
+# Remover comas y convertir a numérico el tipo SALE PRICE
+sale_price <- dataset$`SALE PRICE`
+cleaned_sale_price <- as.numeric(gsub(",", ".", sale_price))
+dataset$`SALE PRICE`<- cleaned_sale_price
+
+# Calcular la cantidad de valores NA en cada columna
+cantidad_nulos <- colSums(is.na(dataset))
+
+
+#Algunas columnas tienen casi en su totalidad valores nulos, por lo tanto las eliminamos
+columnas_a_eliminar <- c("EASEMENT", "APARTMENT NUMBER","BOROUGH")
+dataset <- dataset[, !(names(dataset) %in% columnas_a_eliminar)]
+
+#Verificamos nuestro dataset
+cantidad_nulos <- colSums(is.na(dataset))
+
+
+#Ahora vemos algunas columnas con varios valores NA pero en menos cantidad.
+#Para esto vamos a reemplazarlos con el promedio. Antes verifiquemos cual es el
+#promedio antes de reemplazar
+
+# Obtener los nombres de las columnas numéricas
+columnas_numericas <- names(dataset)[sapply(dataset, is.numeric)]
+
+# Recorrer las columnas numéricas y reemplazar los valores NA por el promedio
+for (col in columnas_numericas) {
+  promedio <- mean(dataset[[col]], na.rm = TRUE)
+  dataset[[col]][is.na(dataset[[col]])] <- promedio
+}
+cantidad_nulos_despues <- colSums(is.na(dataset))
+
+
+#Hallar la media y la desviacion estandar
+isNumericDataset<-dataset %>% summarize_if(is.numeric, mean)
+```
+
+
