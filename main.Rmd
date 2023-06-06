@@ -1,6 +1,6 @@
 ---
 title: Data exploration and clean data
-author: Edward Melendez Mendigure
+author: Edward Melendez Mendigure - Eliazar Noa Llascanoa - Yanet Cusi Quispe
 date: 05/06/2023
 output:
   html_document:
@@ -321,6 +321,7 @@ gghmap(cm1, prop = TRUE)
 DE LAS VARIABLES VISTAS LAS COLUMNAS QUE TIENEN MAYOR CORRELACION SON: `LAND SQUARE FEET` `TAX CLASS AT TIME OF SALE` `COMMERCIAL UNIT` `BLOCK` `ZIP CODE` `RESIDENTIAL UNITS` `TOTAL UNITS`
 
 ### Pruebas de chi cuadrado y anova para datos categoricos
+
 ```{r}
 # Cargar la biblioteca necesaria
 library(stats)
@@ -362,6 +363,7 @@ datos
 ```
 
 ### Guardar datos limpios
+
 ```{r}
 # GUARDANDO DATOS
 carpeta <- "resultados"
@@ -375,3 +377,5 @@ ruta_completa <- file.path(carpeta, nombre_archivo)
 # Guarda el dataset en formato CSV en la ruta especificada
 write.csv(datos, file = ruta_completa, row.names = FALSE)
 ```
+
+### LOS DATOS LIMPIOS ESTAN EN LA CARPETA resultados/rollingsales_clean.csv
