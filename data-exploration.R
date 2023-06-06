@@ -52,7 +52,7 @@ dataset$`SALE PRICE`<- cleaned_sale_price
 
 # Calcular la cantidad de valores NA en cada columna
 cantidad_nulos <- colSums(is.na(dataset))
-cantidad_nulos
+
 
 #Algunas columnas tienen casi en su totalidad valores nulos, por lo tanto las eliminamos
 columnas_a_eliminar <- c("EASEMENT", "APARTMENT NUMBER","BOROUGH")
@@ -60,7 +60,7 @@ dataset <- dataset[, !(names(dataset) %in% columnas_a_eliminar)]
 
 #Verificamos nuestro dataset
 cantidad_nulos <- colSums(is.na(dataset))
-cantidad_nulos
+
 
 #Ahora vemos algunas columnas con varios valores NA pero en menos cantidad.
 #Para esto vamos a reemplazarlos con el promedio. Antes verifiquemos cual es el
@@ -75,12 +75,10 @@ for (col in columnas_numericas) {
   dataset[[col]][is.na(dataset[[col]])] <- promedio
 }
 cantidad_nulos_despues <- colSums(is.na(dataset))
-cantidad_nulos_despues
 
 
 #Hallar la media y la desviacion estandar
 isNumericDataset<-dataset %>% summarize_if(is.numeric, mean)
-isNumericDataset
 
 
 
