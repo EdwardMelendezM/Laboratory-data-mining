@@ -1,0 +1,1289 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Data exploration and clean data},
+  pdfauthor={Edward Melendez Mendigure - Eliazar Noa Llascanoa - Yanet Cusi Quispe},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Data exploration and clean data}
+\author{Edward Melendez Mendigure - Eliazar Noa Llascanoa - Yanet Cusi
+Quispe}
+\date{05/06/2023}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\hypertarget{exploracion-y-limpieza-de-datos}{%
+\section{EXPLORACION Y LIMPIEZA DE
+DATOS}\label{exploracion-y-limpieza-de-datos}}
+
+\hypertarget{conjunto-de-datos}{%
+\subsection{1.1 CONJUNTO DE DATOS}\label{conjunto-de-datos}}
+
+\begin{itemize}
+\tightlist
+\item
+  ``BOROUGH'': El código de borough de la propiedad.
+\item
+  ``NEIGHBORHOOD'': El nombre del vecindario de la propiedad.
+\item
+  ``BUILDING CLASS CATEGORY'': La categoría de clase de construcción de
+  la propiedad.
+\item
+  ``TAX CLASS AT PRESENT'': La clase de impuesto actual de la propiedad.
+\item
+  ``BLOCK'': El número de bloque de la propiedad.
+\item
+  ``LOT'': El número de lote de la propiedad.
+\item
+  ``BUILDING CLASS AT PRESENT'': La clase de construcción actual de la
+  propiedad.
+\item
+  ``ADDRESS'': La dirección de la propiedad.
+\item
+  ``ZIP CODE'': El código postal de la propiedad.
+\item
+  ``RESIDENTIAL UNITS'': El número de unidades residenciales en la
+  propiedad.
+\item
+  ``COMMERCIAL UNITS'': El número de unidades comerciales en la
+  propiedad.
+\item
+  ``TOTAL UNITS'': El número total de unidades en la propiedad.
+\item
+  ``LAND SQUARE FEET'': El tamaño del terreno en pies cuadrados.
+\item
+  ``GROSS SQUARE FEET'': El tamaño bruto en pies cuadrados.
+\item
+  ``YEAR BUILT'': El año de construcción de la propiedad.
+\item
+  ``TAX CLASS AT TIME OF SALE'': La clase de impuesto al momento de la
+  venta de la propiedad.
+\item
+  ``BUILDING CLASS AT TIME OF SALE'': La clase de construcción al
+  momento de la venta de la propiedad.
+\item
+  ``SALE PRICE'': El precio de venta de la propiedad.
+\item
+  ``SALE DATE'': La fecha de venta de la propiedad.
+\end{itemize}
+
+\hypertarget{librerias}{%
+\subsubsection{Librerias}\label{librerias}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+## v dplyr     1.1.2     v readr     2.1.4
+## v forcats   1.0.0     v stringr   1.5.0
+## v ggplot2   3.4.2     v tibble    3.2.1
+## v lubridate 1.9.2     v tidyr     1.3.0
+## v purrr     1.0.1     
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+## i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(GGally)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Registered S3 method overwritten by 'GGally':
+##   method from   
+##   +.gg   ggplot2
+\end{verbatim}
+
+\hypertarget{mostrar-data}{%
+\subsubsection{Mostrar data}\label{mostrar-data}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# EXPLORACION DE DATOS}
+\NormalTok{dataset }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv2}\NormalTok{(}\StringTok{"dataset/rollingsales\_bronx.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## i Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: One or more parsing issues, call `problems()` on your data frame for details,
+## e.g.:
+##   dat <- vroom(...)
+##   problems(dat)
+\end{verbatim}
+
+\begin{verbatim}
+## Rows: 6649 Columns: 21
+\end{verbatim}
+
+\begin{verbatim}
+## -- Column specification --------------------------------------------------------
+## Delimiter: ";"
+## chr  (9): NEIGHBORHOOD, BUILDING CLASS CATEGORY, TAX CLASS AT PRESENT, BUILD...
+## dbl (11): BOROUGH, BLOCK, LOT, ZIP CODE, RESIDENTIAL UNITS, COMMERCIAL UNITS...
+## lgl  (1): EASEMENT
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Mostara 3 filas}
+\FunctionTok{print}\NormalTok{(dataset, }\AttributeTok{n =} \DecValTok{6}\NormalTok{, }\AttributeTok{width =} \ConstantTok{Inf}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6,649 x 21
+##   BOROUGH NEIGHBORHOOD `BUILDING CLASS CATEGORY` `TAX CLASS AT PRESENT` BLOCK
+##     <dbl> <chr>        <chr>                     <chr>                  <dbl>
+## 1       2 BATHGATE     01 ONE FAMILY DWELLINGS   1                       2905
+## 2       2 BATHGATE     01 ONE FAMILY DWELLINGS   1                       3028
+## 3       2 BATHGATE     01 ONE FAMILY DWELLINGS   1                       3030
+## 4       2 BATHGATE     01 ONE FAMILY DWELLINGS   1                       3039
+## 5       2 BATHGATE     01 ONE FAMILY DWELLINGS   1                       3039
+## 6       2 BATHGATE     01 ONE FAMILY DWELLINGS   1                       3046
+##     LOT EASEMENT `BUILDING CLASS AT PRESENT` ADDRESS               
+##   <dbl> <lgl>    <chr>                       <chr>                 
+## 1    26 NA       A9                          1667 WASHINGTON AVENUE
+## 2    24 NA       A1                          410 EAST 179TH STREET 
+## 3    65 NA       A1                          4455 PARK AVENUE      
+## 4    29 NA       A5                          2327 WASHINGTON AVE   
+## 5    63 NA       A1                          469 EAST 185 STREET   
+## 6    38 NA       A1                          2077 BATHGATE AVENUE  
+##   `APARTMENT NUMBER` `ZIP CODE` `RESIDENTIAL UNITS` `COMMERCIAL UNITS`
+##   <chr>                   <dbl>               <dbl>              <dbl>
+## 1 <NA>                    10457                   1                  0
+## 2 <NA>                    10457                   1                  0
+## 3 <NA>                    10457                   1                  0
+## 4 <NA>                    10458                   1                  0
+## 5 <NA>                    10458                   1                  0
+## 6 <NA>                    10457                   1                  0
+##   `TOTAL UNITS` `LAND SQUARE FEET` `GROSS SQUARE FEET` `YEAR BUILT`
+##           <dbl>              <dbl>               <dbl>        <dbl>
+## 1             1               4.75                3.17         1899
+## 2             1               1.84                2.05         1901
+## 3             1               1.62                1.59         1899
+## 4             1               1.10                1.26         1910
+## 5             1               1.65                1.30         1910
+## 6             1               2.31                1.62         1899
+##   `TAX CLASS AT TIME OF SALE` `BUILDING CLASS AT TIME OF SALE` `SALE PRICE`
+##                         <dbl> <chr>                            <chr>       
+## 1                           1 A9                               980,000     
+## 2                           1 A1                               655,000     
+## 3                           1 A1                               520,000     
+## 4                           1 A5                               499,999     
+## 5                           1 A1                               599,000     
+## 6                           1 A1                               540,000     
+##   `SALE DATE`
+##   <chr>      
+## 1 8/09/2022  
+## 2 1/11/2022  
+## 3 26/10/2022 
+## 4 28/04/2022 
+## 5 17/05/2022 
+## 6 19/04/2022 
+## # i 6,643 more rows
+\end{verbatim}
+
+\hypertarget{calidad-de-datos}{%
+\subsection{1.2 CALIDAD DE DATOS}\label{calidad-de-datos}}
+
+Visualizemos los datos de forma general
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Resumen de datos}
+\FunctionTok{class}\NormalTok{(dataset)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "spec_tbl_df" "tbl_df"      "tbl"         "data.frame"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dim}\NormalTok{(dataset)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 6649   21
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(dataset)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     BOROUGH  NEIGHBORHOOD       BUILDING CLASS CATEGORY TAX CLASS AT PRESENT
+##  Min.   :2   Length:6649        Length:6649             Length:6649         
+##  1st Qu.:2   Class :character   Class :character        Class :character    
+##  Median :2   Mode  :character   Mode  :character        Mode  :character    
+##  Mean   :2                                                                  
+##  3rd Qu.:2                                                                  
+##  Max.   :2                                                                  
+##                                                                             
+##      BLOCK           LOT         EASEMENT       BUILDING CLASS AT PRESENT
+##  Min.   :2260   Min.   :   1.0   Mode:logical   Length:6649              
+##  1st Qu.:3344   1st Qu.:  21.0   NA's:6649      Class :character         
+##  Median :4266   Median :  48.0                  Mode  :character         
+##  Mean   :4282   Mean   : 309.2                                           
+##  3rd Qu.:5339   3rd Qu.: 122.0                                           
+##  Max.   :5955   Max.   :9100.0                                           
+##                                                                          
+##    ADDRESS          APARTMENT NUMBER      ZIP CODE     RESIDENTIAL UNITS
+##  Length:6649        Length:6649        Min.   :10123   Min.   :  0.000  
+##  Class :character   Class :character   1st Qu.:10461   1st Qu.:  1.000  
+##  Mode  :character   Mode  :character   Median :10465   Median :  2.000  
+##                                        Mean   :10464   Mean   :  3.165  
+##                                        3rd Qu.:10469   3rd Qu.:  2.000  
+##                                        Max.   :10475   Max.   :355.000  
+##                                                        NA's   :1264     
+##  COMMERCIAL UNITS   TOTAL UNITS      LAND SQUARE FEET  GROSS SQUARE FEET
+##  Min.   : 0.0000   Min.   :  0.000   Min.   :  1.005   Min.   :  0.000  
+##  1st Qu.: 0.0000   1st Qu.:  1.000   1st Qu.:  2.233   1st Qu.:  1.668  
+##  Median : 0.0000   Median :  2.000   Median :  2.500   Median :  2.248  
+##  Mean   : 0.1979   Mean   :  3.319   Mean   :  9.426   Mean   : 23.838  
+##  3rd Qu.: 0.0000   3rd Qu.:  2.000   3rd Qu.:  3.742   3rd Qu.:  3.200  
+##  Max.   :33.0000   Max.   :355.000   Max.   :992.000   Max.   :998.000  
+##  NA's   :1783      NA's   :1224      NA's   :1826      NA's   :1826     
+##    YEAR BUILT   TAX CLASS AT TIME OF SALE BUILDING CLASS AT TIME OF SALE
+##  Min.   :1884   Min.   :1.000             Length:6649                   
+##  1st Qu.:1925   1st Qu.:1.000             Class :character              
+##  Median :1940   Median :1.000             Mode  :character              
+##  Mean   :1945   Mean   :1.489                                           
+##  3rd Qu.:1961   3rd Qu.:2.000                                           
+##  Max.   :2022   Max.   :4.000                                           
+##  NA's   :628                                                            
+##   SALE PRICE         SALE DATE        
+##  Length:6649        Length:6649       
+##  Class :character   Class :character  
+##  Mode  :character   Mode  :character  
+##                                       
+##                                       
+##                                       
+## 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{colnames}\NormalTok{(dataset)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "BOROUGH"                        "NEIGHBORHOOD"                  
+##  [3] "BUILDING CLASS CATEGORY"        "TAX CLASS AT PRESENT"          
+##  [5] "BLOCK"                          "LOT"                           
+##  [7] "EASEMENT"                       "BUILDING CLASS AT PRESENT"     
+##  [9] "ADDRESS"                        "APARTMENT NUMBER"              
+## [11] "ZIP CODE"                       "RESIDENTIAL UNITS"             
+## [13] "COMMERCIAL UNITS"               "TOTAL UNITS"                   
+## [15] "LAND SQUARE FEET"               "GROSS SQUARE FEET"             
+## [17] "YEAR BUILT"                     "TAX CLASS AT TIME OF SALE"     
+## [19] "BUILDING CLASS AT TIME OF SALE" "SALE PRICE"                    
+## [21] "SALE DATE"
+\end{verbatim}
+
+\hypertarget{limpieza-de-datos}{%
+\subsubsection{Limpieza de datos}\label{limpieza-de-datos}}
+
+1.2.1 Remover N.A en atributos cualitativos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Remover comas y convertir a numérico el tipo SALE PRICE}
+\NormalTok{sale\_price }\OtherTok{\textless{}{-}}\NormalTok{ dataset}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{SALE PRICE}\StringTok{\textasciigrave{}}
+\NormalTok{cleaned\_sale\_price }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{, }\StringTok{"."}\NormalTok{, sale\_price))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: NAs introducidos por coerción
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dataset}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{SALE PRICE}\StringTok{\textasciigrave{}}\OtherTok{\textless{}{-}}\NormalTok{ cleaned\_sale\_price}
+
+\CommentTok{\# Calcular la cantidad de valores NA en cada columna}
+\NormalTok{cantidad\_nulos }\OtherTok{\textless{}{-}} \FunctionTok{colSums}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(dataset))}
+
+
+\CommentTok{\#Algunas columnas tienen casi en su totalidad valores nulos, por lo tanto las eliminamos}
+\NormalTok{columnas\_a\_eliminar }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"EASEMENT"}\NormalTok{, }\StringTok{"APARTMENT NUMBER"}\NormalTok{,}\StringTok{"BOROUGH"}\NormalTok{)}
+\NormalTok{dataset }\OtherTok{\textless{}{-}}\NormalTok{ dataset[, }\SpecialCharTok{!}\NormalTok{(}\FunctionTok{names}\NormalTok{(dataset) }\SpecialCharTok{\%in\%}\NormalTok{ columnas\_a\_eliminar)]}
+
+\CommentTok{\#Verificamos nuestro dataset}
+\NormalTok{cantidad\_nulos }\OtherTok{\textless{}{-}} \FunctionTok{colSums}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(dataset))}
+
+
+\CommentTok{\#Ahora vemos algunas columnas con varios valores NA pero en menos cantidad.}
+\CommentTok{\#Para esto vamos a reemplazarlos con el promedio. Antes verifiquemos cual es el}
+\CommentTok{\#promedio antes de reemplazar}
+
+\CommentTok{\# Obtener los nombres de las columnas numéricas}
+\NormalTok{columnas\_numericas }\OtherTok{\textless{}{-}} \FunctionTok{names}\NormalTok{(dataset)[}\FunctionTok{sapply}\NormalTok{(dataset, is.numeric)]}
+
+\CommentTok{\# Recorrer las columnas numéricas y reemplazar los valores NA por el promedio}
+\ControlFlowTok{for}\NormalTok{ (col }\ControlFlowTok{in}\NormalTok{ columnas\_numericas) \{}
+\NormalTok{  promedio }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(dataset[[col]], }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{  dataset[[col]][}\FunctionTok{is.na}\NormalTok{(dataset[[col]])] }\OtherTok{\textless{}{-}}\NormalTok{ promedio}
+\NormalTok{\}}
+\NormalTok{cantidad\_nulos\_despues }\OtherTok{\textless{}{-}} \FunctionTok{colSums}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(dataset))}
+
+
+\CommentTok{\#Hallar la media y la desviacion estandar}
+\NormalTok{isNumericDataset}\OtherTok{\textless{}{-}}\NormalTok{dataset }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summarize\_if}\NormalTok{(is.numeric, mean)}
+\end{Highlighting}
+\end{Shaded}
+
+1.2.2 Eliminar datos unicos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Crear una lista para almacenar los resultados}
+\NormalTok{resultados }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{()}
+
+\CommentTok{\# Recorrer las columnas y calcular los resultados}
+\ControlFlowTok{for}\NormalTok{ (col }\ControlFlowTok{in} \FunctionTok{names}\NormalTok{(dataset)) \{}
+\NormalTok{  num\_filas }\OtherTok{\textless{}{-}} \FunctionTok{nrow}\NormalTok{(dataset)  }\CommentTok{\# número total de filas en el dataset}
+\NormalTok{  num\_valores\_unicos }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(}\FunctionTok{unique}\NormalTok{(dataset[[col]]))  }\CommentTok{\# cantidad de valores únicos en la columna}
+  
+\NormalTok{  proporcion\_valores\_unicos }\OtherTok{\textless{}{-}}\NormalTok{ num\_valores\_unicos }\SpecialCharTok{/}\NormalTok{ num\_filas}
+  
+  \ControlFlowTok{if}\NormalTok{ (proporcion\_valores\_unicos }\SpecialCharTok{\textgreater{}} \FloatTok{0.9}\NormalTok{) \{}
+\NormalTok{    resultado }\OtherTok{\textless{}{-}} \StringTok{"{-}{-}{-}DATOS UNICOS"}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{    resultado }\OtherTok{\textless{}{-}} \StringTok{"{-}\textgreater{}Datos distintos"}
+\NormalTok{  \}}
+  
+\NormalTok{  resultados[[col]] }\OtherTok{\textless{}{-}}\NormalTok{ resultado}
+\NormalTok{\}}
+
+\CommentTok{\# Mostrar el dataframe resultante}
+\NormalTok{resultados}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $NEIGHBORHOOD
+## [1] "->Datos distintos"
+## 
+## $`BUILDING CLASS CATEGORY`
+## [1] "->Datos distintos"
+## 
+## $`TAX CLASS AT PRESENT`
+## [1] "->Datos distintos"
+## 
+## $BLOCK
+## [1] "->Datos distintos"
+## 
+## $LOT
+## [1] "->Datos distintos"
+## 
+## $`BUILDING CLASS AT PRESENT`
+## [1] "->Datos distintos"
+## 
+## $ADDRESS
+## [1] "---DATOS UNICOS"
+## 
+## $`ZIP CODE`
+## [1] "->Datos distintos"
+## 
+## $`RESIDENTIAL UNITS`
+## [1] "->Datos distintos"
+## 
+## $`COMMERCIAL UNITS`
+## [1] "->Datos distintos"
+## 
+## $`TOTAL UNITS`
+## [1] "->Datos distintos"
+## 
+## $`LAND SQUARE FEET`
+## [1] "->Datos distintos"
+## 
+## $`GROSS SQUARE FEET`
+## [1] "->Datos distintos"
+## 
+## $`YEAR BUILT`
+## [1] "->Datos distintos"
+## 
+## $`TAX CLASS AT TIME OF SALE`
+## [1] "->Datos distintos"
+## 
+## $`BUILDING CLASS AT TIME OF SALE`
+## [1] "->Datos distintos"
+## 
+## $`SALE PRICE`
+## [1] "->Datos distintos"
+## 
+## $`SALE DATE`
+## [1] "->Datos distintos"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# ELIMINAR COLUMNA CON DATOS UNICOS}
+\NormalTok{columnas\_a\_eliminar }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"ADDRESS"}\NormalTok{)}
+\NormalTok{dataset }\OtherTok{\textless{}{-}}\NormalTok{ dataset[, }\SpecialCharTok{!}\NormalTok{(}\FunctionTok{names}\NormalTok{(dataset) }\SpecialCharTok{\%in\%}\NormalTok{ columnas\_a\_eliminar)]}
+\FunctionTok{dim}\NormalTok{(dataset)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 6649   17
+\end{verbatim}
+
+1.2.2 Eliminar datos inusuales o absurdos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Supongamos que tienes una columna llamada \textquotesingle{}fecha\textquotesingle{} en tu conjunto de datos}
+\NormalTok{dataset}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{SALE DATE}\StringTok{\textasciigrave{}} \OtherTok{\textless{}{-}} \FunctionTok{as.Date}\NormalTok{(dataset}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{SALE DATE}\StringTok{\textasciigrave{}}\NormalTok{)  }\CommentTok{\# Convertir la columna \textquotesingle{}fecha\textquotesingle{} a tipo Date}
+
+\CommentTok{\# Luego, puedes convertir la columna de fecha a tipo numérico}
+\NormalTok{dataset}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{SALE DATE}\StringTok{\textasciigrave{}} \OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(dataset}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{SALE DATE}\StringTok{\textasciigrave{}}\NormalTok{)}
+
+\NormalTok{breaks }\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(dataset}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{SALE PRICE}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{probs =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{0.33}\NormalTok{, }\FloatTok{0.67}\NormalTok{, }\DecValTok{1}\NormalTok{))}
+\NormalTok{breaks}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      0%     33%     67%    100% 
+##   0.000 100.000 491.240 999.999
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dataset}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{SALE PRICE}\StringTok{\textasciigrave{}} \OtherTok{\textless{}{-}} \FunctionTok{cut}\NormalTok{(dataset}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{SALE PRICE}\StringTok{\textasciigrave{}}\NormalTok{,}
+                          \AttributeTok{breaks =}\NormalTok{ breaks,}
+                          \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{))}
+
+\CommentTok{\#Actualizar valores numericos}
+\NormalTok{columnas\_numericas }\OtherTok{\textless{}{-}} \FunctionTok{names}\NormalTok{(dataset)[}\FunctionTok{sapply}\NormalTok{(dataset, is.numeric)]}
+\NormalTok{columnas\_NO\_numericas }\OtherTok{\textless{}{-}} \FunctionTok{names}\NormalTok{(dataset)[}\SpecialCharTok{!}\FunctionTok{sapply}\NormalTok{(dataset, is.numeric)]}
+
+
+
+\NormalTok{dataset}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6,649 x 17
+##    NEIGHBORHOOD `BUILDING CLASS CATEGORY` `TAX CLASS AT PRESENT` BLOCK   LOT
+##    <chr>        <chr>                     <chr>                  <dbl> <dbl>
+##  1 BATHGATE     01 ONE FAMILY DWELLINGS   1                       2905    26
+##  2 BATHGATE     01 ONE FAMILY DWELLINGS   1                       3028    24
+##  3 BATHGATE     01 ONE FAMILY DWELLINGS   1                       3030    65
+##  4 BATHGATE     01 ONE FAMILY DWELLINGS   1                       3039    29
+##  5 BATHGATE     01 ONE FAMILY DWELLINGS   1                       3039    63
+##  6 BATHGATE     01 ONE FAMILY DWELLINGS   1                       3046    38
+##  7 BATHGATE     01 ONE FAMILY DWELLINGS   1                       3050    80
+##  8 BATHGATE     01 ONE FAMILY DWELLINGS   1                       3050    80
+##  9 BATHGATE     01 ONE FAMILY DWELLINGS   1                       3053   102
+## 10 BATHGATE     01 ONE FAMILY DWELLINGS   1                       3053   105
+## # i 6,639 more rows
+## # i 12 more variables: `BUILDING CLASS AT PRESENT` <chr>, `ZIP CODE` <dbl>,
+## #   `RESIDENTIAL UNITS` <dbl>, `COMMERCIAL UNITS` <dbl>, `TOTAL UNITS` <dbl>,
+## #   `LAND SQUARE FEET` <dbl>, `GROSS SQUARE FEET` <dbl>, `YEAR BUILT` <dbl>,
+## #   `TAX CLASS AT TIME OF SALE` <dbl>, `BUILDING CLASS AT TIME OF SALE` <chr>,
+## #   `SALE PRICE` <fct>, `SALE DATE` <dbl>
+\end{verbatim}
+
+\hypertarget{agregacion}{%
+\subsection{1.3 AGREGACION}\label{agregacion}}
+
+No es necesario hacer la agregacion
+
+\hypertarget{muestreo---aleatorio}{%
+\subsection{1.4 MUESTREO - ALEATORIO}\label{muestreo---aleatorio}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{take }\OtherTok{\textless{}{-}} \FunctionTok{sample}\NormalTok{(}\FunctionTok{seq}\NormalTok{(}\FunctionTok{nrow}\NormalTok{(dataset)), }\AttributeTok{size =} \DecValTok{100}\NormalTok{)}
+\NormalTok{muestraDataset}\OtherTok{\textless{}{-}}\NormalTok{dataset[take, ]}
+\NormalTok{muestraDataset}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 100 x 17
+##    NEIGHBORHOOD        BUILDING CLASS CATEG~1 `TAX CLASS AT PRESENT` BLOCK   LOT
+##    <chr>               <chr>                  <chr>                  <dbl> <dbl>
+##  1 SCHUYLERVILLE/PELH~ 03 THREE FAMILY DWELL~ 1                       5336    45
+##  2 COUNTRY CLUB        01 ONE FAMILY DWELLIN~ 1                       5409   515
+##  3 PARKCHESTER         10 COOPS - ELEVATOR A~ 2                       3901    31
+##  4 KINGSBRIDGE HTS/UN~ 01 ONE FAMILY DWELLIN~ 1                       3221    71
+##  5 BRONXDALE           09 COOPS - WALKUP APA~ 2                       4573     5
+##  6 COUNTRY CLUB        02 TWO FAMILY DWELLIN~ 1                       5417   186
+##  7 SOUNDVIEW           02 TWO FAMILY DWELLIN~ 1                       3876     2
+##  8 SCHUYLERVILLE/PELH~ 02 TWO FAMILY DWELLIN~ 1                       5376    33
+##  9 SOUNDVIEW           02 TWO FAMILY DWELLIN~ 1                       3456    33
+## 10 RIVERDALE           10 COOPS - ELEVATOR A~ 2                       5864   526
+## # i 90 more rows
+## # i abbreviated name: 1: `BUILDING CLASS CATEGORY`
+## # i 12 more variables: `BUILDING CLASS AT PRESENT` <chr>, `ZIP CODE` <dbl>,
+## #   `RESIDENTIAL UNITS` <dbl>, `COMMERCIAL UNITS` <dbl>, `TOTAL UNITS` <dbl>,
+## #   `LAND SQUARE FEET` <dbl>, `GROSS SQUARE FEET` <dbl>, `YEAR BUILT` <dbl>,
+## #   `TAX CLASS AT TIME OF SALE` <dbl>, `BUILDING CLASS AT TIME OF SALE` <chr>,
+## #   `SALE PRICE` <fct>, `SALE DATE` <dbl>
+\end{verbatim}
+
+\hypertarget{escalado-multidimensional}{%
+\subsection{1.5 ESCALADO
+MULTIDIMENSIONAL}\label{escalado-multidimensional}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(Matrix)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'Matrix'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:tidyr':
+## 
+##     expand, pack, unpack
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(arules)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'arules'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:dplyr':
+## 
+##     recode
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     abbreviate, write
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{numeric\_columns }\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(muestraDataset, is.numeric)}
+\NormalTok{selected\_columns }\OtherTok{\textless{}{-}} \FunctionTok{names}\NormalTok{(muestraDataset)[numeric\_columns]}
+\NormalTok{selected\_columns }\OtherTok{\textless{}{-}}\NormalTok{ selected\_columns[}\SpecialCharTok{!}\NormalTok{selected\_columns }\SpecialCharTok{\%in\%} \StringTok{"SALE PRICE"}\NormalTok{]}
+\NormalTok{d }\OtherTok{\textless{}{-}}\NormalTok{ muestraDataset }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\FunctionTok{all\_of}\NormalTok{(selected\_columns)) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{dist}\NormalTok{()}
+\NormalTok{fit }\OtherTok{\textless{}{-}} \FunctionTok{cmdscale}\NormalTok{(d, }\AttributeTok{k =} \DecValTok{2}\NormalTok{)}
+\FunctionTok{colnames}\NormalTok{(fit) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"comp1"}\NormalTok{, }\StringTok{"comp2"}\NormalTok{)}
+\NormalTok{fit }\OtherTok{\textless{}{-}} \FunctionTok{as\_tibble}\NormalTok{(fit) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{add\_column}\NormalTok{(}\StringTok{"SALE PRICE"} \OtherTok{=}\NormalTok{ muestraDataset}\SpecialCharTok{$}\StringTok{"SALE PRICE"}\NormalTok{)}
+\FunctionTok{ggplot}\NormalTok{(fit, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ comp1, }\AttributeTok{y =}\NormalTok{ comp2)) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{main_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+\hypertarget{discretizacion-de-caracteristicas}{%
+\subsubsection{Discretizacion de
+caracteristicas}\label{discretizacion-de-caracteristicas}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(muestraDataset, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{\textasciigrave{}}\AttributeTok{LAND SQUARE FEET}\StringTok{\textasciigrave{}}\NormalTok{ )) }\SpecialCharTok{+} \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =}\NormalTok{ .}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{main_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(muestraDataset, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{\textasciigrave{}}\AttributeTok{GROSS SQUARE FEET}\StringTok{\textasciigrave{}}\NormalTok{ )) }\SpecialCharTok{+} \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =}\NormalTok{ .}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{main_files/figure-latex/unnamed-chunk-9-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(muestraDataset, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{\textasciigrave{}}\AttributeTok{YEAR BUILT}\StringTok{\textasciigrave{}}\NormalTok{ )) }\SpecialCharTok{+} \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =}\NormalTok{ .}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{main_files/figure-latex/unnamed-chunk-9-3.pdf}
+
+\hypertarget{estandarizacion-de-datos}{%
+\subsubsection{Estandarizacion de
+datos}\label{estandarizacion-de-datos}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{scale\_numeric }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) x }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate\_if}\NormalTok{(is.numeric, }\ControlFlowTok{function}\NormalTok{(y) }\FunctionTok{as.vector}\NormalTok{(}\FunctionTok{scale}\NormalTok{(y)))}
+\NormalTok{muestraDataset }\OtherTok{\textless{}{-}}\NormalTok{ muestraDataset }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{scale\_numeric}\NormalTok{()}
+\FunctionTok{summary}\NormalTok{(muestraDataset)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  NEIGHBORHOOD       BUILDING CLASS CATEGORY TAX CLASS AT PRESENT
+##  Length:100         Length:100              Length:100          
+##  Class :character   Class :character        Class :character    
+##  Mode  :character   Mode  :character        Mode  :character    
+##                                                                 
+##                                                                 
+##                                                                 
+##      BLOCK              LOT          BUILDING CLASS AT PRESENT
+##  Min.   :-2.0833   Min.   :-0.3846   Length:100               
+##  1st Qu.:-0.6476   1st Qu.:-0.3526   Class :character         
+##  Median : 0.1486   Median :-0.2936   Mode  :character         
+##  Mean   : 0.0000   Mean   : 0.0000                            
+##  3rd Qu.: 0.9544   3rd Qu.:-0.2271                            
+##  Max.   : 1.5026   Max.   : 6.7321                            
+##     ZIP CODE       RESIDENTIAL UNITS COMMERCIAL UNITS    TOTAL UNITS      
+##  Min.   :-2.2991   Min.   :-0.5883   Min.   :-0.33494   Min.   :-0.61874  
+##  1st Qu.:-0.4686   1st Qu.:-0.3488   1st Qu.:-0.33494   1st Qu.:-0.38418  
+##  Median :-0.1025   Median :-0.1093   Median :-0.33494   Median :-0.14962  
+##  Mean   : 0.0000   Mean   : 0.0000   Mean   : 0.00000   Mean   : 0.00000  
+##  3rd Qu.: 0.6297   3rd Qu.: 0.1302   3rd Qu.:-0.04621   3rd Qu.: 0.08494  
+##  Max.   : 1.7280   Max.   : 9.2313   Max.   : 5.50075   Max.   : 9.23273  
+##  LAND SQUARE FEET   GROSS SQUARE FEET   YEAR BUILT     
+##  Min.   :-0.16805   Min.   :-0.1973   Min.   :-1.5059  
+##  1st Qu.:-0.15111   1st Qu.:-0.1833   1st Qu.:-0.7701  
+##  Median :-0.14586   Median :-0.1784   Median :-0.1744  
+##  Mean   : 0.00000   Mean   : 0.0000   Mean   : 0.0000  
+##  3rd Qu.:-0.05107   3rd Qu.:-0.1317   3rd Qu.: 0.5527  
+##  Max.   : 9.60399   Max.   : 7.0294   Max.   : 2.6990  
+##  TAX CLASS AT TIME OF SALE BUILDING CLASS AT TIME OF SALE SALE PRICE
+##  Min.   :-0.5155           Length:100                     0   : 7   
+##  1st Qu.:-0.5155           Class :character               1   :33   
+##  Median :-0.5155           Mode  :character               2   :34   
+##  Mean   : 0.0000                                          NA's:26   
+##  3rd Qu.: 0.6051                                                    
+##  Max.   : 2.8463                                                    
+##    SALE DATE        
+##  Min.   :-1.991340  
+##  1st Qu.:-0.738760  
+##  Median :-0.006223  
+##  Mean   : 0.000000  
+##  3rd Qu.: 0.843416  
+##  Max.   : 1.672099
+\end{verbatim}
+
+\hypertarget{proximidades-y-distancias}{%
+\subsubsection{Proximidades y
+distancias}\label{proximidades-y-distancias}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{people }\OtherTok{\textless{}{-}}\NormalTok{ muestraDataset }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate\_if}\NormalTok{(is.character, factor)}
+\NormalTok{people}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 100 x 17
+##    NEIGHBORHOOD     BUILDING CLASS CATEG~1 `TAX CLASS AT PRESENT`  BLOCK     LOT
+##    <fct>            <fct>                  <fct>                   <dbl>   <dbl>
+##  1 SCHUYLERVILLE/P~ 03 THREE FAMILY DWELL~ 1                       0.899 -0.276 
+##  2 COUNTRY CLUB     01 ONE FAMILY DWELLIN~ 1                       0.971  0.881 
+##  3 PARKCHESTER      10 COOPS - ELEVATOR A~ 2                      -0.503 -0.311 
+##  4 KINGSBRIDGE HTS~ 01 ONE FAMILY DWELLIN~ 1                      -1.17  -0.212 
+##  5 BRONXDALE        09 COOPS - WALKUP APA~ 2                       0.154 -0.375 
+##  6 COUNTRY CLUB     02 TWO FAMILY DWELLIN~ 1                       0.979  0.0708
+##  7 SOUNDVIEW        02 TWO FAMILY DWELLIN~ 1                      -0.528 -0.382 
+##  8 SCHUYLERVILLE/P~ 02 TWO FAMILY DWELLIN~ 1                       0.939 -0.306 
+##  9 SOUNDVIEW        02 TWO FAMILY DWELLIN~ 1                      -0.938 -0.306 
+## 10 RIVERDALE        10 COOPS - ELEVATOR A~ 2                       1.42   0.908 
+## # i 90 more rows
+## # i abbreviated name: 1: `BUILDING CLASS CATEGORY`
+## # i 12 more variables: `BUILDING CLASS AT PRESENT` <fct>, `ZIP CODE` <dbl>,
+## #   `RESIDENTIAL UNITS` <dbl>, `COMMERCIAL UNITS` <dbl>, `TOTAL UNITS` <dbl>,
+## #   `LAND SQUARE FEET` <dbl>, `GROSS SQUARE FEET` <dbl>, `YEAR BUILT` <dbl>,
+## #   `TAX CLASS AT TIME OF SALE` <dbl>, `BUILDING CLASS AT TIME OF SALE` <fct>,
+## #   `SALE PRICE` <fct>, `SALE DATE` <dbl>
+\end{verbatim}
+
+\hypertarget{ver-matriz-de-correlacion}{%
+\subsubsection{Ver matriz de
+correlacion}\label{ver-matriz-de-correlacion}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cc }\OtherTok{\textless{}{-}}\NormalTok{ muestraDataset }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{columnas\_NO\_numericas) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{cor}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Using an external vector in selections was deprecated in tidyselect 1.1.0.
+## i Please use `all_of()` or `any_of()` instead.
+##   # Was:
+##   data %>% select(columnas_NO_numericas)
+## 
+##   # Now:
+##   data %>% select(all_of(columnas_NO_numericas))
+## 
+## See <https://tidyselect.r-lib.org/reference/faq-external-vector.html>.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cc}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                 BLOCK          LOT     ZIP CODE
+## BLOCK                      1.00000000 -0.042820423  0.427649130
+## LOT                       -0.04282042  1.000000000 -0.001292648
+## ZIP CODE                   0.42764913 -0.001292648  1.000000000
+## RESIDENTIAL UNITS         -0.19492817 -0.076744720 -0.162763745
+## COMMERCIAL UNITS          -0.20513688 -0.007260784 -0.142103502
+## TOTAL UNITS               -0.21183222 -0.100377762 -0.166592330
+## LAND SQUARE FEET           0.12023971  0.001006397 -0.055392298
+## GROSS SQUARE FEET          0.07801249 -0.005437815  0.082339366
+## YEAR BUILT                -0.01782510  0.325867730  0.103206328
+## TAX CLASS AT TIME OF SALE -0.19561099  0.086308236 -0.283356708
+## SALE DATE                 -0.03350222  0.102819928 -0.027261982
+##                           RESIDENTIAL UNITS COMMERCIAL UNITS  TOTAL UNITS
+## BLOCK                           -0.19492817     -0.205136876 -0.211832224
+## LOT                             -0.07674472     -0.007260784 -0.100377762
+## ZIP CODE                        -0.16276375     -0.142103502 -0.166592330
+## RESIDENTIAL UNITS                1.00000000      0.042903476  0.985534567
+## COMMERCIAL UNITS                 0.04290348      1.000000000  0.194544500
+## TOTAL UNITS                      0.98553457      0.194544500  1.000000000
+## LAND SQUARE FEET                -0.06354864     -0.035256828 -0.067323090
+## GROSS SQUARE FEET               -0.01849486     -0.041137579 -0.024523592
+## YEAR BUILT                      -0.07076534     -0.055046737 -0.101712258
+## TAX CLASS AT TIME OF SALE        0.01530714      0.650764878  0.097723202
+## SALE DATE                       -0.01933695      0.125664977 -0.009631821
+##                           LAND SQUARE FEET GROSS SQUARE FEET  YEAR BUILT
+## BLOCK                          0.120239711       0.078012493 -0.01782510
+## LOT                            0.001006397      -0.005437815  0.32586773
+## ZIP CODE                      -0.055392298       0.082339366  0.10320633
+## RESIDENTIAL UNITS             -0.063548642      -0.018494860 -0.07076534
+## COMMERCIAL UNITS              -0.035256828      -0.041137579 -0.05504674
+## TOTAL UNITS                   -0.067323090      -0.024523592 -0.10171226
+## LAND SQUARE FEET               1.000000000      -0.023494375  0.01701206
+## GROSS SQUARE FEET             -0.023494375       1.000000000 -0.00845947
+## YEAR BUILT                     0.017012059      -0.008459470  1.00000000
+## TAX CLASS AT TIME OF SALE      0.036510716      -0.056721093  0.01676053
+## SALE DATE                      0.019671054       0.036950934  0.02167974
+##                           TAX CLASS AT TIME OF SALE    SALE DATE
+## BLOCK                                   -0.19561099 -0.033502218
+## LOT                                      0.08630824  0.102819928
+## ZIP CODE                                -0.28335671 -0.027261982
+## RESIDENTIAL UNITS                        0.01530714 -0.019336950
+## COMMERCIAL UNITS                         0.65076488  0.125664977
+## TOTAL UNITS                              0.09772320 -0.009631821
+## LAND SQUARE FEET                         0.03651072  0.019671054
+## GROSS SQUARE FEET                       -0.05672109  0.036950934
+## YEAR BUILT                               0.01676053  0.021679738
+## TAX CLASS AT TIME OF SALE                1.00000000  0.106673142
+## SALE DATE                                0.10667314  1.000000000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(muestraDataset, }\FunctionTok{aes}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{RESIDENTIAL UNITS}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{TOTAL UNITS}\StringTok{\textasciigrave{}}\NormalTok{)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula = 'y ~ x'
+\end{verbatim}
+
+\includegraphics{main_files/figure-latex/unnamed-chunk-12-1.pdf}
+
+\hypertarget{estimacion-de-densidad}{%
+\subsubsection{ESTIMACION DE DENSIDAD}\label{estimacion-de-densidad}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+
+\CommentTok{\#Dos dimensiones}
+\FunctionTok{ggplot}\NormalTok{(muestraDataset, }\FunctionTok{aes}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{RESIDENTIAL UNITS}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{TOTAL UNITS}\StringTok{\textasciigrave{}}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_density\_2d\_filled}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_jitter}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{main_files/figure-latex/unnamed-chunk-13-1.pdf}
+
+\hypertarget{matriz-de-correlacion-img}{%
+\subsubsection{Matriz de correlacion
+img}\label{matriz-de-correlacion-img}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggcorrplot)}
+\FunctionTok{library}\NormalTok{(seriation)}
+\FunctionTok{library}\NormalTok{(corrplot)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## corrplot 0.92 loaded
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cm1 }\OtherTok{\textless{}{-}}\NormalTok{ muestraDataset }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{columnas\_NO\_numericas,}\SpecialCharTok{{-}}\StringTok{\textasciigrave{}}\AttributeTok{SALE PRICE}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}\NormalTok{ as.matrix }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{cor}\NormalTok{()}
+\FunctionTok{ggcorrplot}\NormalTok{(cm1)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{main_files/figure-latex/unnamed-chunk-14-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Vemos otro}
+\FunctionTok{gghmap}\NormalTok{(cm1, }\AttributeTok{prop =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{main_files/figure-latex/unnamed-chunk-14-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Visualiza la matriz de correlación}
+\FunctionTok{corrplot}\NormalTok{(cm1, }\AttributeTok{type =} \StringTok{"upper"}\NormalTok{, }\AttributeTok{method =} \StringTok{"circle"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{main_files/figure-latex/unnamed-chunk-14-3.pdf}
+
+\hypertarget{conversion-de-datos-categoricos-a-numericos-con-factores}{%
+\subsubsection{CONVERSION DE DATOS CATEGORICOS A NUMERICOS CON
+FACTORES}\label{conversion-de-datos-categoricos-a-numericos-con-factores}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Seleccionar las columnas categóricas que se convertirán en factores}
+\NormalTok{muestraDataset[columnas\_NO\_numericas] }\OtherTok{\textless{}{-}} \FunctionTok{lapply}\NormalTok{(muestraDataset[columnas\_NO\_numericas], factor)}
+
+\CommentTok{\# Convertir los factores a variables numericas}
+\NormalTok{muestraDataset[columnas\_NO\_numericas] }\OtherTok{\textless{}{-}} \FunctionTok{lapply}\NormalTok{(muestraDataset[columnas\_NO\_numericas], as.numeric)}
+
+\CommentTok{\# Imprimir el resultado}
+\NormalTok{muestraDataset}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 100 x 17
+##    NEIGHBORHOOD `BUILDING CLASS CATEGORY` `TAX CLASS AT PRESENT`  BLOCK     LOT
+##           <dbl>                     <dbl>                  <dbl>  <dbl>   <dbl>
+##  1           21                         3                      1  0.899 -0.276 
+##  2            7                         1                      1  0.971  0.881 
+##  3           17                         8                      5 -0.503 -0.311 
+##  4           10                         1                      1 -1.17  -0.212 
+##  5            4                         7                      5  0.154 -0.375 
+##  6            7                         2                      1  0.979  0.0708
+##  7           22                         2                      1 -0.528 -0.382 
+##  8           21                         2                      1  0.939 -0.306 
+##  9           22                         2                      1 -0.938 -0.306 
+## 10           20                         8                      5  1.42   0.908 
+## # i 90 more rows
+## # i 12 more variables: `BUILDING CLASS AT PRESENT` <dbl>, `ZIP CODE` <dbl>,
+## #   `RESIDENTIAL UNITS` <dbl>, `COMMERCIAL UNITS` <dbl>, `TOTAL UNITS` <dbl>,
+## #   `LAND SQUARE FEET` <dbl>, `GROSS SQUARE FEET` <dbl>, `YEAR BUILT` <dbl>,
+## #   `TAX CLASS AT TIME OF SALE` <dbl>, `BUILDING CLASS AT TIME OF SALE` <dbl>,
+## #   `SALE PRICE` <dbl>, `SALE DATE` <dbl>
+\end{verbatim}
+
+\hypertarget{visualizar-datos-atipicos-de-columnas-numericas}{%
+\subsubsection{VISUALIZAR DATOS ATIPICOS DE COLUMNAS
+NUMERICAS}\label{visualizar-datos-atipicos-de-columnas-numericas}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\CommentTok{\# Calcular la cantidad de valores atípicos en cada columna numérica}
+\NormalTok{valores\_atipicos }\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(muestraDataset[, columnas\_numericas], }\ControlFlowTok{function}\NormalTok{(x) \{}
+\NormalTok{  limite\_superior }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(x) }\SpecialCharTok{+} \DecValTok{2} \SpecialCharTok{*} \FunctionTok{sd}\NormalTok{(x)}
+\NormalTok{  limite\_inferior }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(x) }\SpecialCharTok{{-}} \DecValTok{2} \SpecialCharTok{*} \FunctionTok{sd}\NormalTok{(x)}
+  \FunctionTok{sum}\NormalTok{(x }\SpecialCharTok{\textless{}}\NormalTok{ limite\_inferior }\SpecialCharTok{|}\NormalTok{ x }\SpecialCharTok{\textgreater{}}\NormalTok{ limite\_superior)}
+\NormalTok{\})}
+
+\CommentTok{\# Crear un dataframe con los nombres de las columnas y la cantidad de valores atípicos}
+\NormalTok{datos\_atipicos }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{Columna =} \FunctionTok{names}\NormalTok{(valores\_atipicos),}
+\NormalTok{                             Valores\_Atípicos }\OtherTok{=}\NormalTok{ valores\_atipicos)}
+
+\CommentTok{\# Crear el gráfico de barras}
+\NormalTok{grafico }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(datos\_atipicos, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Columna, }\AttributeTok{y =}\NormalTok{ Valores\_Atípicos)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"steelblue"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Cantidad de Valores Atípicos por Columna"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Columna"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Cantidad de Valores Atípicos"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{90}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))}
+
+\CommentTok{\# Mostrar el gráfico}
+\FunctionTok{print}\NormalTok{(grafico)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{main_files/figure-latex/unnamed-chunk-16-1.pdf}
+
+\hypertarget{eiminar-datos-atipicos-de-las-columnas-numericas}{%
+\subsubsection{Eiminar datos atipicos de las columnas
+numericas}\label{eiminar-datos-atipicos-de-las-columnas-numericas}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}}
+\CommentTok{\# Calcular los límites para identificar los valores atípicos en cada columna numérica}
+\NormalTok{limites }\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(muestraDataset[, columnas\_numericas], }\ControlFlowTok{function}\NormalTok{(x) \{}
+\NormalTok{  limite\_superior }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(x) }\SpecialCharTok{+} \DecValTok{2} \SpecialCharTok{*} \FunctionTok{sd}\NormalTok{(x)}
+\NormalTok{  limite\_inferior }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(x) }\SpecialCharTok{{-}} \DecValTok{2} \SpecialCharTok{*} \FunctionTok{sd}\NormalTok{(x)}
+  \FunctionTok{list}\NormalTok{(}\AttributeTok{limite\_inferior =}\NormalTok{ limite\_inferior, }\AttributeTok{limite\_superior =}\NormalTok{ limite\_superior)}
+\NormalTok{\})}
+
+\CommentTok{\# Eliminar los valores atípicos en cada columna numérica}
+\NormalTok{datos\_sin\_atipicos }\OtherTok{\textless{}{-}}\NormalTok{ muestraDataset}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(columnas\_numericas)) \{}
+\NormalTok{  columna }\OtherTok{\textless{}{-}} \FunctionTok{names}\NormalTok{(columnas\_numericas)[i]}
+\NormalTok{  limite\_inf }\OtherTok{\textless{}{-}}\NormalTok{ limites}\SpecialCharTok{$}\NormalTok{limite\_inferior[i]}
+\NormalTok{  limite\_sup }\OtherTok{\textless{}{-}}\NormalTok{ limites}\SpecialCharTok{$}\NormalTok{limite\_superior[i]}
+\NormalTok{  datos\_sin\_atipicos[, columna] }\OtherTok{\textless{}{-}} \FunctionTok{ifelse}\NormalTok{(muestraDataset[, columna] }\SpecialCharTok{\textgreater{}=}\NormalTok{ limite\_inf }\SpecialCharTok{\&}\NormalTok{ muestraDataset[, columna] }\SpecialCharTok{\textless{}=}\NormalTok{ limite\_sup,}
+\NormalTok{                                          muestraDataset[, columna], }\ConstantTok{NA}\NormalTok{)}
+\NormalTok{\}}
+
+\CommentTok{\# Eliminar filas que contienen valores atípicos en al menos una columna numérica}
+\NormalTok{datos\_sin\_atipicos }\OtherTok{\textless{}{-}}\NormalTok{ datos\_sin\_atipicos[}\FunctionTok{complete.cases}\NormalTok{(datos\_sin\_atipicos), ]}
+
+\CommentTok{\#VISUALIZAR NUESTRA RELACION DE COLUMNAS}
+\NormalTok{cm1 }\OtherTok{\textless{}{-}}\NormalTok{ datos\_sin\_atipicos }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{columnas\_NO\_numericas,}\SpecialCharTok{{-}}\StringTok{\textasciigrave{}}\AttributeTok{SALE PRICE}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}\NormalTok{ as.matrix }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{cor}\NormalTok{()}
+\NormalTok{cm1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                 BLOCK         LOT    ZIP CODE RESIDENTIAL UNITS
+## BLOCK                      1.00000000 -0.02339382  0.51801577     -0.1062303274
+## LOT                       -0.02339382  1.00000000  0.08715311     -0.1713791113
+## ZIP CODE                   0.51801577  0.08715311  1.00000000     -0.0935661034
+## RESIDENTIAL UNITS         -0.10623033 -0.17137911 -0.09356610      1.0000000000
+## COMMERCIAL UNITS          -0.18028697 -0.04766534 -0.10983768     -0.2059933537
+## TOTAL UNITS               -0.18356946 -0.21532167 -0.14336463      0.8970589876
+## LAND SQUARE FEET           0.12522723  0.08378106 -0.01109976     -0.1368860214
+## GROSS SQUARE FEET          0.08913697 -0.02102360  0.12013919     -0.0920427203
+## YEAR BUILT                 0.04436581  0.35928166  0.15810004     -0.0842428777
+## TAX CLASS AT TIME OF SALE -0.16807018 -0.01519317 -0.20905760     -0.1714782673
+## SALE DATE                 -0.04495623  0.06206123  0.04506124      0.0001806749
+##                           COMMERCIAL UNITS TOTAL UNITS LAND SQUARE FEET
+## BLOCK                          -0.18028697 -0.18356946       0.12522723
+## LOT                            -0.04766534 -0.21532167       0.08378106
+## ZIP CODE                       -0.10983768 -0.14336463      -0.01109976
+## RESIDENTIAL UNITS              -0.20599335  0.89705899      -0.13688602
+## COMMERCIAL UNITS                1.00000000  0.24667237      -0.02892647
+## TOTAL UNITS                     0.24667237  1.00000000      -0.14964537
+## LAND SQUARE FEET               -0.02892647 -0.14964537       1.00000000
+## GROSS SQUARE FEET              -0.05598045 -0.11519393      -0.02967290
+## YEAR BUILT                     -0.07387962 -0.12900583       0.04721713
+## TAX CLASS AT TIME OF SALE       0.66066463  0.12709771       0.35191983
+## SALE DATE                       0.12762855  0.05689575      -0.03527455
+##                           GROSS SQUARE FEET    YEAR BUILT
+## BLOCK                          0.0891369713  0.0443658056
+## LOT                           -0.0210235994  0.3592816603
+## ZIP CODE                       0.1201391868  0.1581000352
+## RESIDENTIAL UNITS             -0.0920427203 -0.0842428777
+## COMMERCIAL UNITS              -0.0559804502 -0.0738796209
+## TOTAL UNITS                   -0.1151939331 -0.1290058348
+## LAND SQUARE FEET              -0.0296729027  0.0472171257
+## GROSS SQUARE FEET              1.0000000000 -0.0001663727
+## YEAR BUILT                    -0.0001663727  1.0000000000
+## TAX CLASS AT TIME OF SALE     -0.0931375944 -0.0505388496
+## SALE DATE                      0.0326064593 -0.0529799228
+##                           TAX CLASS AT TIME OF SALE     SALE DATE
+## BLOCK                                   -0.16807018 -0.0449562341
+## LOT                                     -0.01519317  0.0620612255
+## ZIP CODE                                -0.20905760  0.0450612436
+## RESIDENTIAL UNITS                       -0.17147827  0.0001806749
+## COMMERCIAL UNITS                         0.66066463  0.1276285524
+## TOTAL UNITS                              0.12709771  0.0568957525
+## LAND SQUARE FEET                         0.35191983 -0.0352745516
+## GROSS SQUARE FEET                       -0.09313759  0.0326064593
+## YEAR BUILT                              -0.05053885 -0.0529799228
+## TAX CLASS AT TIME OF SALE                1.00000000  0.0532746388
+## SALE DATE                                0.05327464  1.0000000000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Visualiza la matriz de correlación}
+\FunctionTok{corrplot}\NormalTok{(cm1, }\AttributeTok{type =} \StringTok{"upper"}\NormalTok{, }\AttributeTok{method =} \StringTok{"square"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{main_files/figure-latex/unnamed-chunk-17-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggcorrplot}\NormalTok{(cm1)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{main_files/figure-latex/unnamed-chunk-17-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{gghmap}\NormalTok{(cm1, }\AttributeTok{prop =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{main_files/figure-latex/unnamed-chunk-17-3.pdf}
+
+DE LAS VARIABLES VISTAS LAS COLUMNAS QUE TIENEN MAYOR CORRELACION SON:
+\texttt{LAND\ SQUARE\ FEET} \texttt{TAX\ CLASS\ AT\ TIME\ OF\ SALE}
+\texttt{COMMERCIAL\ UNIT} \texttt{BLOCK} \texttt{ZIP\ CODE}
+\texttt{RESIDENTIAL\ UNITS} \texttt{TOTAL\ UNITS}
+
+\hypertarget{pruebas-de-chi-cuadrado-y-anova-para-datos-categoricos}{%
+\subsubsection{Pruebas de chi cuadrado y anova para datos
+categoricos}\label{pruebas-de-chi-cuadrado-y-anova-para-datos-categoricos}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Cargar la biblioteca necesaria}
+\FunctionTok{library}\NormalTok{(stats)}
+
+\NormalTok{columnas\_categoricas }\OtherTok{\textless{}{-}} \FunctionTok{names}\NormalTok{(dataset)[}\SpecialCharTok{!}\FunctionTok{sapply}\NormalTok{(dataset, is.numeric)]}
+\NormalTok{columnas\_categoricas}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "NEIGHBORHOOD"                   "BUILDING CLASS CATEGORY"       
+## [3] "TAX CLASS AT PRESENT"           "BUILDING CLASS AT PRESENT"     
+## [5] "BUILDING CLASS AT TIME OF SALE" "SALE PRICE"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{datos}\OtherTok{\textless{}{-}}\NormalTok{ datos\_sin\_atipicos}
+
+
+\CommentTok{\# Realizar el test de chi cuadrado}
+\NormalTok{anova\_result }\OtherTok{\textless{}{-}} \FunctionTok{anova}\NormalTok{(}\FunctionTok{lm}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{SALE PRICE}\StringTok{\textasciigrave{}} \SpecialCharTok{\textasciitilde{}}\NormalTok{ NEIGHBORHOOD }\SpecialCharTok{+}
+                           \StringTok{\textasciigrave{}}\AttributeTok{BUILDING CLASS CATEGORY}\StringTok{\textasciigrave{}} \SpecialCharTok{+}
+                           \StringTok{\textasciigrave{}}\AttributeTok{TAX CLASS AT PRESENT}\StringTok{\textasciigrave{}} \SpecialCharTok{+}
+                           \StringTok{\textasciigrave{}}\AttributeTok{BUILDING CLASS AT PRESENT}\StringTok{\textasciigrave{}} \SpecialCharTok{+}
+                           \StringTok{\textasciigrave{}}\AttributeTok{BUILDING CLASS AT TIME OF SALE}\StringTok{\textasciigrave{}}\NormalTok{,}
+                         \AttributeTok{data =}\NormalTok{ datos))}
+\CommentTok{\# Mostrar los resultados del test de ANOVA}
+\FunctionTok{print}\NormalTok{(anova\_result)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Analysis of Variance Table
+## 
+## Response: SALE PRICE
+##                             Df  Sum Sq Mean Sq F value    Pr(>F)    
+## NEIGHBORHOOD                 1  0.0023  0.0023  0.0068   0.93437    
+## `BUILDING CLASS CATEGORY`    1  6.8977  6.8977 20.8624 2.097e-05 ***
+## `TAX CLASS AT PRESENT`       1  1.0557  1.0557  3.1929   0.07835 .  
+## `BUILDING CLASS AT PRESENT`  1  0.3798  0.3798  1.1486   0.28758    
+## Residuals                   69 22.8133  0.3306                      
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# POR LO TANTO DADO LO ANTERIOR DEBEMOS CONSIDERAR COMO VARIABLES CATEGORICAS}
+\CommentTok{\# QUE SERAN INCLUIDAS AL MODELO}
+\CommentTok{\# \textasciigrave{}BUILDING CLASS CATEGORY\textasciigrave{}  \textasciigrave{}BUILDING CLASS AT PRESENT\textasciigrave{}}
+
+\CommentTok{\# SELECCION DE COLUMNAS APROPIADAS PARA EL ENTRENAMIENTO}
+\CommentTok{\# Final}
+\NormalTok{datos}\OtherTok{\textless{}{-}}\NormalTok{datos\_sin\_atipicos }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{LAND SQUARE FEET}\StringTok{\textasciigrave{}}\NormalTok{,}
+                                     \StringTok{\textasciigrave{}}\AttributeTok{TAX CLASS AT TIME OF SALE}\StringTok{\textasciigrave{}}\NormalTok{,}
+                                     \StringTok{\textasciigrave{}}\AttributeTok{COMMERCIAL UNITS}\StringTok{\textasciigrave{}}\NormalTok{,}
+\NormalTok{                                     BLOCK,}
+                                     \StringTok{\textasciigrave{}}\AttributeTok{ZIP CODE}\StringTok{\textasciigrave{}}\NormalTok{,}
+                                     \StringTok{\textasciigrave{}}\AttributeTok{RESIDENTIAL UNITS}\StringTok{\textasciigrave{}}\NormalTok{,}
+                                     \StringTok{\textasciigrave{}}\AttributeTok{TOTAL UNITS}\StringTok{\textasciigrave{}}\NormalTok{,}
+                                     \StringTok{\textasciigrave{}}\AttributeTok{BUILDING CLASS CATEGORY}\StringTok{\textasciigrave{}}\NormalTok{,}
+                                     \StringTok{\textasciigrave{}}\AttributeTok{BUILDING CLASS AT PRESENT}\StringTok{\textasciigrave{}}\NormalTok{,}
+\NormalTok{                                     NEIGHBORHOOD,}
+                                     \StringTok{\textasciigrave{}}\AttributeTok{SALE PRICE}\StringTok{\textasciigrave{}}\NormalTok{)}
+
+\NormalTok{datos}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 74 x 11
+##    `LAND SQUARE FEET` `TAX CLASS AT TIME OF SALE` `COMMERCIAL UNITS`  BLOCK
+##                 <dbl>                       <dbl>              <dbl>  <dbl>
+##  1            -0.111                       -0.515            -0.335   0.899
+##  2            -0.158                       -0.515            -0.335   0.971
+##  3            -0.0511                       0.605            -0.0462 -0.503
+##  4            -0.115                       -0.515            -0.335  -1.17 
+##  5            -0.0511                       0.605            -0.0462  0.154
+##  6            -0.150                       -0.515            -0.335  -0.528
+##  7            -0.149                       -0.515            -0.335   0.939
+##  8            -0.0511                       0.605            -0.0462  1.42 
+##  9            -0.141                        0.605            -0.335   0.395
+## 10            -0.144                       -0.515            -0.335  -0.708
+## # i 64 more rows
+## # i 7 more variables: `ZIP CODE` <dbl>, `RESIDENTIAL UNITS` <dbl>,
+## #   `TOTAL UNITS` <dbl>, `BUILDING CLASS CATEGORY` <dbl>,
+## #   `BUILDING CLASS AT PRESENT` <dbl>, NEIGHBORHOOD <dbl>, `SALE PRICE` <dbl>
+\end{verbatim}
+
+\hypertarget{guardar-datos-limpios}{%
+\subsubsection{Guardar datos limpios}\label{guardar-datos-limpios}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GUARDANDO DATOS}
+\NormalTok{carpeta }\OtherTok{\textless{}{-}} \StringTok{"resultados"}
+
+\CommentTok{\# Especifica el nombre del archivo CSV}
+\NormalTok{nombre\_archivo }\OtherTok{\textless{}{-}} \StringTok{"rollingsales\_clean.csv"}
+
+\CommentTok{\# Combina la ruta de la carpeta y el nombre del archivo}
+\NormalTok{ruta\_completa }\OtherTok{\textless{}{-}} \FunctionTok{file.path}\NormalTok{(carpeta, nombre\_archivo)}
+
+\CommentTok{\# Guarda el dataset en formato CSV en la ruta especificada}
+\FunctionTok{write.csv}\NormalTok{(datos, }\AttributeTok{file =}\NormalTok{ ruta\_completa, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{los-datos-limpios-estan-en-la-carpeta-resultadosrollingsales_clean.csv}{%
+\subsubsection{LOS DATOS LIMPIOS ESTAN EN LA CARPETA
+resultados/rollingsales\_clean.csv}\label{los-datos-limpios-estan-en-la-carpeta-resultadosrollingsales_clean.csv}}
+
+\end{document}

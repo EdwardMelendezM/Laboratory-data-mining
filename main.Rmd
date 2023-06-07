@@ -1,10 +1,13 @@
 ---
-title: Data exploration and clean data
-author: Edward Melendez Mendigure - Eliazar Noa Llascanoa - Yanet Cusi Quispe
-date: 05/06/2023
+title: "Data exploration and clean data"
+author: "Edward Melendez Mendigure - Eliazar Noa Llascanoa - Yanet Cusi Quispe"
+date: "05/06/2023"
 output:
+  pdf_document:
+    toc: yes
+    toc_depth: '2'
   html_document:
-    toc: true
+    toc: yes
     toc_depth: 2
 ---
 
